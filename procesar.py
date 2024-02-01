@@ -5,6 +5,9 @@ from nltk.stem import PorterStemmer, WordNetLemmatizer
 from nltk.stem.snowball import SnowballStemmer
 import spacy
 from spacy.lang.es.stop_words import STOP_WORDS
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+from collections import Counter
 
 def lematizacion_text(text):
     nlp = spacy.load("en_core_web_sm")
@@ -67,6 +70,37 @@ def remove_links(text):
 
 def tokenize_text(text):
     return word_tokenize(text)
+
+def cloud_words(text):
+    if not isinstance(text, str):
+        raise ValueError("Error en cloud_words: La entrada debe ser una cadena.")
+
+    wordcloud = WordCloud(width=800, height=800,
+                          background_color='white',
+                          stopwords=None,
+                          min_font_size=10).generate(text)
+    
+    return wordcloud
+
+def graficar_cloud_words(self, entrada):
+    plt.figure(figsize = (8, 8), facecolor = None) #definimos tamaño y el color de fondo 
+    plt.imshow(entrada) #mostramos la imagen
+    plt.axis("off") # desactivamos los ejes
+    plt.tight_layout(pad = 0) # subtrama se ajuste a la figura
+    plt.show()
+
+def frec_words(text):
+    if not isinstance(text, str):
+        raise ValueError("Error en frec_words: La entrada debe ser una cadena.")
+    palabras = re.findall(r'\b\w+\b', text.lower())
+    # Contar la frecuencia de cada palabra
+    frecuencia = Counter(palabras)
+    return frecuencia
+
+def graficar_frec_words(self, frecuencia):
+    # Crear un gráfico de barras de la frecuencia de las palabras
+    plt.bar(frecuencia.keys(), frecuencia.values())
+    plt.show()
 
 # def preprocess_text(text):
 #     if text_lematizacion:

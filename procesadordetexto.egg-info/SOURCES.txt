@@ -1,0 +1,11 @@
+LICENSE
+MANIFEST.in
+README.md
+setup.py
+procesadordetexto.egg-info/PKG-INFO
+procesadordetexto.egg-info/SOURCES.txt
+procesadordetexto.egg-info/dependency_links.txt
+procesadordetexto.egg-info/requires.txt
+procesadordetexto.egg-info/top_level.txt
+procesamiento/__init__.py
+procesamiento/procesamiento_texto.py
